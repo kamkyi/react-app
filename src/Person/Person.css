@@ -1,0 +1,13 @@
+.Person{
+    border:1px solid black;
+    border-radius: 4px;
+    background:brown;
+    height: 160px;
+    color: white;
+    text-shadow: 2px 2px 0 black;
+    padding: 2px;
+}
+
+ul li{
+    list-style-type: none;
+}

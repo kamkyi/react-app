@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{ Component } from 'react';
+import classes from './App.css';
+import Person from './Person/Person.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component{
+    state = {
+         persons:[
+             {name:'Wai',age:'22',id:'123'},
+             {name:'Sai',age:'11',id:'234'},
+             {name:'Kam',age:'10',id:'344'}
+         ]
+        }
+
+    clickHandler = (personIndex) => {
+           const persons = this.state.persons;
+
+           persons.splice(personIndex,1);
+
+           this.setState({persons:persons});
+    }
+    render(){
+    
+      return (
+        <div className="App">
+            <p style={classes.blue}>
+                 I' m Wai Hyn Htun
+            </p>
+            {
+                this.state.persons.map((person,index)=>{
+                     return <Person name={person.name} age={person.age} key={person.id} click={this.clickHandler.bind(this,index)}/>;
+                })
+            }
+        </div>
+      );
+    }
 }
 
 export default App;
